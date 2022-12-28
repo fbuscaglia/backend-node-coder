@@ -1,0 +1,18 @@
+[
+  {
+    "title": "titulo",
+    "description": "una descripcion corta",
+    "price": 300,
+    "thumbnail": "no tiene foto",
+    "stock": 8,
+    "id": 1
+  },
+  {
+    "title": "titulin",
+    "description": "una descripcion ",
+    "price": 200,
+    "thumbnail": "no tiene foto",
+    "stock": 10,
+    "id": 2
+  }
+]

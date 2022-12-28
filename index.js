@@ -1,30 +1,49 @@
+const fs = require("fs");
+
 class ProductManager {
   constructor() {
     this.products = [];
+    this.path = "Products.json";
   }
-  addProduct(title, description, price, thumbnail, stock, id) {
-    if (!title || !description || !price || !thumbnail || !stock) {
-      return console.log("Producto incompleto");
-    } else {
-      const product = {
-        title,
-        description,
-        price,
-        thumbnail,
-        stock,
-        id: this.#generarId(),
-      };
-      if (this.products.find((e) => e.id === id)) {
-        console.log("no se pueden repetir los id");
+  async getProducts() {
+    try {
+      if (fs.existsSync(this.path)) {
+        const productInfo = await fs.promises.readFile(this.path, "utf-8");
+        const productInfoJS = JSON.parse(productInfo);
+        return productInfoJS;
       } else {
-        this.products.push(product);
+        return [];
       }
+    } catch (error) {
+      console.log(error);
     }
+  }
+  
+  async addProduct(title, description, price, thumbnail, stock, id) {
+    try {
+      if (!title || !description || !price || !thumbnail || !stock) {
+        return console.log("Producto incompleto");
+      } else {
+        const product = {
+          title,
+          description,
+          price,
+          thumbnail,
+          stock,
+          id: this.#generarId(),
+        };
+        if (this.products.find((e) => e.id === id)) {
+          console.log("no se pueden repetir los id");
+        } else {
+          this.products.push(product);
+          await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, 2))
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-  }
-  getProducts() {
-    console.log(this.products);
-  }
   getProductById(id) {
     this.products.find((e) => e.id === id)
       ? console.log(this.products.find((e) => e.id === id))
