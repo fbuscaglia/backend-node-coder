@@ -14,5 +14,13 @@
     "thumbnail": "no tiene foto",
     "stock": 10,
     "id": 2
+  },
+  {
+    "title": "titulin0000",
+    "description": "una descripcioncita",
+    "price": 4000,
+    "thumbnail": "no tiene foto",
+    "stock": 28,
+    "id": 3
   }
 ]
