@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/fbuscaglia/backend-node-coder/issues"
   },
-  "homepage": "https://github.com/fbuscaglia/backend-node-coder#readme"
+  "homepage": "https://github.com/fbuscaglia/backend-node-coder#readme",
+  "dependencies": {
+    "multer": "^1.4.5-lts.1"
+  }
 }
